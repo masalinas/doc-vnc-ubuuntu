@@ -5,20 +5,20 @@ Install VNC server called x11vnc in Ubuntu. Tested in Ubuntu 20.04 and Ubuntu 24
 $ sudo apt install x11vnc
 ```
 
-## set default vnc password for simur user
-Execute this command
+## Configure vnc authentication access
+Execute this command to set default vnc password for simur user
 ```
 $ x11vnc -storepasswd
 ```
 
-## Create service
+## Create service daemon
 Create x11vnc service called **x11vnc.service**
 
 ```
 $ sudo nano /lib/systemd/system/x11vnc.service
 ```
 
-If you have problems, check the display Id from 1 to 0:
+If you have some problems at service starting point check the display Id from 1 to 0:
 
 ```
 [Unit]
@@ -36,8 +36,9 @@ Restart=on-failure
 WantedBy=graphical.target
 ```
 
-## Reload services ans enable x11vnc and restart server
+## Activate service and start
 If don't want restart the server, execute this commands:
+
 ```
 $ sudo systemctl daemon-reload
 $ sudo systemctl enable x11vnc
@@ -50,4 +51,11 @@ Sometimes maybe you have problems with the virtual screens in your server then e
 ```
 $ gsettings set org.gnome.mutter dynamic-workspaces false
 $ gsettings set org.gnome.desktop.wm.preferences num-workspaces 1
+```
+
+## Install VNC client
+Now download and install VNC Client like Real VNC Viewer from:
+
+```
+https://www.realvnc.com/en/connect/download/viewer/
 ```
