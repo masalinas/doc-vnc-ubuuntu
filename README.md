@@ -31,11 +31,16 @@ Wants=graphical.target
 Type=simple
 User=simur
 ExecStart=/usr/bin/x11vnc -display :1 -auth /home/simur/.Xauthority -usepw -forever -shared -loop
-#ExecStart=/usr/bin/x11vnc -display :1 -auth guess -passwd !Thingtrack2010 -forever
 Restart=on-failure
 
 [Install]
 WantedBy=graphical.target
+```
+
+In my Ubuntu 20.04 I have this execution start configuration
+
+```
+ExecStart=/usr/bin/x11vnc -display :1 -auth guess -passwd !Thingtrack2010 -forever
 ```
 
 ## Activate service and start
