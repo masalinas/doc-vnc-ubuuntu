@@ -31,6 +31,7 @@ Wants=graphical.target
 Type=simple
 User=simur
 ExecStart=/usr/bin/x11vnc -display :1 -auth /home/simur/.Xauthority -usepw -forever -shared -loop
+#ExecStart=/usr/bin/x11vnc -display :1 -auth guess -passwd !Thingtrack2010 -forever
 Restart=on-failure
 
 [Install]
