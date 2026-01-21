@@ -37,10 +37,21 @@ Restart=on-failure
 WantedBy=graphical.target
 ```
 
-In my Ubuntu 20.04 I have this execution start configuration
+In my Ubuntu 20.04 I have this service configuration:
 
 ```
-ExecStart=/usr/bin/x11vnc -display :1 -auth guess -passwd !Thingtrack2010 -forever
+[Unit]
+Description=x11vnc service
+After=display-manager.service network.target syslog.target
+
+[Service]
+Type=simple
+ExecStart=/usr/bin/x11vnc -forever -display :0 -auth guess -passwd underground
+ExecStop=/usr/bin/killall x11vnc
+Restart=on-failure
+
+[Install]
+WantedBy=multi-user.target
 ```
 
 ## Activate service and start
